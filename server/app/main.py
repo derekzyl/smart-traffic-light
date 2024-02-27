@@ -1,19 +1,23 @@
-from fastapi import FastApi, status
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JsonResponse
 
-from config.config import Config
+from functools import lru_cache
 
-config = Config()
+from app.config.config import Config
+from fastapi import FastAPI, status
+from fastapi.responses import JSONResponse
 
 
-app:FastApi = FastApi()
+@lru_cache
+def get_config()->Config:
+ return Config()
+
+
+app:FastAPI = FastAPI()
 
 
 
 @app.get("/")
-async def info() -> JsonResponse:
-    return JsonResponse(status_code= status.HTTP_200_OK, content={"message":"welcome to smart traffic light "})
+async def info() -> JSONResponse:
+    return JSONResponse(status_code= status.HTTP_200_OK, content={"message":"welcome to smart traffic light "})
     
 
 

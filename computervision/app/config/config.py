@@ -11,4 +11,3 @@ class Config(BaseSettings):
     PORT:int
     
     HOST:str
-    
