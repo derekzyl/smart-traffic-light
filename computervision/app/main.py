@@ -12,7 +12,7 @@ app:FastAPI = FastAPI()
 @app.get("/")
 async def info() -> JSONResponse:
     return JSONResponse(status_code= status.HTTP_200_OK, content={
-        "message": "Hello World"
+        "message": "open cv side"
     })
 
 
